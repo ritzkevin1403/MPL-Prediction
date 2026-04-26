@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPL Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --accent: #3b82f6;
+            --top2: #fbbf24;
+            --playoff: #10b981;
+            --out: #ef4444;
+            --danger: #f97316;
+            --text-main: #f3f4f6;
+            --text-dim: #9ca3af;
+            --border: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 35%),
+                radial-gradient(circle at 100% 100%, rgba(167, 139, 250, 0.1) 0%, transparent 35%);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin: 0;
+            font-weight: 800;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+        }
+
+        th {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            padding: 10px;
+            text-align: center;
+        }
+
+        td {
+            background: rgba(31, 41, 55, 0.4);
+            padding: 14px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        tr td:first-child { border-radius: 10px 0 0 10px; }
+        tr td:last-child { border-radius: 0 10px 10px 0; }
+
+        .row-top2 td { border-left: 4px solid var(--top2); }
+        .row-playoff td { border-left: 4px solid var(--playoff); }
+        .row-out td { border-left: 4px solid var(--out); opacity: 0.6; }
+
+        #chanceTable {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chance-card {
+            background: linear-gradient(90deg, rgba(31, 41, 55, 0.8) 0%, rgba(17, 24, 39, 0.9) 100%);
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .chance-card:hover { transform: translateX(5px); border-color: rgba(255,255,255,0.15); }
+
+        .status-indicator {
+            position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+        }
+
+        .team-info { flex: 1; }
+        .team-info .name { font-size: 1.1rem; font-weight: 800; }
+        .status-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .metrics { display: flex; gap: 15px; text-align: right; }
+        .metric-item { display: flex; flex-direction: column; }
+        .metric-value { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; }
+        .metric-label { font-size: 0.55rem; color: var(--text-dim); text-transform: uppercase; }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(8px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .modal-content {
+            background: #111827; border: 1px solid var(--accent);
+            padding: 30px; border-radius: 20px; max-width: 500px; width: 90%;
+            position: relative; box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+        }
+        .close-modal {
+            position: absolute; top: 15px; right: 20px; font-size: 1.5rem;
+            cursor: pointer; color: var(--text-dim);
+        }
+        .analysis-box {
+            background: rgba(255, 255, 255, 0.05); padding: 15px;
+            border-radius: 12px; margin-top: 15px; border-left: 4px solid var(--accent);
+        }
+        .analysis-title { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 800; margin-bottom: 5px; }
+
+        /* --- CSS MATCHES PERBAIKAN HORIZONTAL HP --- */
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        .week-title {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+            font-weight: 800;
+            color: var(--accent);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .week-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
+        .match-card {
+            background: rgba(31, 41, 55, 0.3);
+            border: 1px solid var(--border);
+            padding: 10px 8px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: row; 
+            justify-content: space-between;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .match-score-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 6px;
+            border-radius: 8px;
+            min-width: 95px; 
+            flex-shrink: 0;
+        }
+
+        .match-card select {
+            background: #111827;
+            color: white;
+            border: 1px solid #374151;
+            padding: 4px 0;
+            border-radius: 4px;
+            font-weight: bold;
+            width: 32px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .team-name { 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            flex: 1; 
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+        }
+
+        .reset-btn {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--out);
+            border: 1px solid var(--out);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .reset-btn:hover { background: var(--out); color: white; }
+
+        .locked { color: var(--playoff); text-shadow: 0 0 8px rgba(16, 185, 129, 0.5); }
+        .dead { color: var(--out); opacity: 0.5; }
+
+        @media (max-width: 1000px) {
+            .grid-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h2>Analytics Center</h2>
+    </header>
+
+    <div class="grid-layout">
+        <div class="card">
+            <div class="section-header">
+                <h3>📊 Standings Tracker</h3>
+                <button class="reset-btn" onclick="resetData()">Reset Simulation</button>
+            </div>
+            <div style="overflow-x: auto;">
+                <table id="standings"></table>
+            </div>
+
+            <div class="section-header" style="margin-top: 30px;">
+                <h3>🎮 Match Predictions</h3>
+            </div>
+            <div class="matches-grid" id="matches"></div>
+        </div>
+
+        <div>
+            <div class="card" style="position: sticky; top: 20px;">
+                <div class="section-header">
+                    <h3>🎯 Win Probability</h3>
+                </div>
+                <div id="chanceTable"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <span class="close-modal" onclick="closeModal()">×</span>
+        <h2 id="modalTeamName" style="margin-bottom: 5px;">Team Name</h2>
+        <div id="modalTeamStatus" class="status-label" style="margin-bottom: 20px;">CONTENDER</div>
+        
+        <div class="analysis-box">
+            <div class="analysis-title">Scenario Playoff</div>
+            <div id="playoffScenario">Menghitung...</div>
+        </div>
+        
+        <div class="analysis-box" style="border-left-color: var(--top2);">
+            <div class="analysis-title">Scenario Upper Bracket</div>
+            <div id="upperScenario">Menghitung...</div>
+        </div>
+
+        <div class="analysis-box" style="border-left-color: #a78bfa;">
+            <div class="analysis-title">AI Prediction Memo</div>
+            <div id="aiMemo">Memproses data simulasi...</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const teamsList = ["RRQ", "EVOS", "ALTER EGO", "BIGETRON", "ONIC", "GEEK FAM", "NAVI", "DEWA", "TLID"];
+let weeks = [];
+let teams = [];
+let probability = {};
+
+const defaultData = {
+    weeks: [
+        { name: "Week 7", matches: [{A: "RRQ", B: "EVOS"}, {A: "ONIC", B: "TLID"}] },
+        { name: "Week 8", matches: [{A: "GEEK FAM", B: "DEWA"}, {A: "BIGETRON", B: "ALTER EGO"}] },
+        { name: "Week 9", matches: [{A: "NAVI", B: "RRQ"}, {A: "EVOS", B: "ONIC"}] }
+    ]
+};
+
+async function loadData() {
+    try {
+        const res = await fetch("data.json");
+        const data = await res.json();
+        weeks = data.weeks;
+    } catch(e) {
+        weeks = defaultData.weeks;
+    }
+
+    const saved = JSON.parse(localStorage.getItem("mplData_pro"));
+    if(saved) weeks = saved;
+
+    refresh();
+}
+
+function refresh() {
+    initTeams();
+    calc();
+    simulate(20000);
+    renderStandings();
+    renderChance();
+    renderMatches();
+}
+
+function initTeams() {
+    teams = teamsList.map(t => ({ name: t, mw: 0, ml: 0, gw: 0, gl: 0 }));
+}
+
+function calc() {
+    teams.forEach(t => { t.mw=0; t.ml=0; t.gw=0; t.gl=0; });
+    weeks.forEach(w => {
+        w.matches.forEach(m => {
+            if(m.sa === undefined) return;
+            let A = teams.find(x => x.name == m.A);
+            let B = teams.find(x => x.name == m.B);
+            A.gw += m.sa; A.gl += m.sb;
+            B.gw += m.sb; B.gl += m.sa;
+            if(m.sa > m.sb) { A.mw++; B.ml++; } else { B.mw++; A.ml++; }
+        });
+    });
+    teams.sort((a,b) => (b.mw !== a.mw) ? b.mw - a.mw : (b.gw - b.gl) - (a.gw - a.gl));
+}
+
+function simulate(iter = 20000) {
+    teamsList.forEach(t => probability[t] = { playoff: 0, top2: 0 });
+    for(let k=0; k<iter; k++) {
+        let sim = teamsList.map(t => ({ name: t, mw: 0, ml: 0, gw: 0, gl: 0 }));
+        const get = (n) => sim.find(x => x.name == n);
+
+        weeks.forEach(w => {
+            w.matches.forEach(m => {
+                let sa, sb;
+                if(m.sa !== undefined) { sa = m.sa; sb = m.sb; }
+                else {
+                    let r = Math.random();
+                    if(r < 0.25) { sa=2; sb=0; } else if(r < 0.5) { sa=2; sb=1; }
+                    else if(r < 0.75) { sa=1; sb=2; } else { sa=0; sb=2; }
+                }
+                let A = get(m.A), B = get(m.B);
+                A.gw += sa; A.gl += sb; B.gw += sb; B.gl += sa;
+                if(sa > sb) { A.mw++; B.ml++; } else { B.mw++; A.ml++; }
+            });
+        });
+        sim.sort((a,b) => (b.mw !== a.mw) ? b.mw - a.mw : (b.gw - b.gl) - (a.gw - a.gl));
+        sim.forEach((t, i) => {
+            if(i < 6) probability[t.name].playoff++;
+            if(i < 2) probability[t.name].top2++;
+        });
+    }
+    teamsList.forEach(t => {
+        probability[t].playoff = (probability[t].playoff / iter * 100);
+        probability[t].top2 = (probability[t].top2 / iter * 100);
+    });
+}
+
+function formatPercent(p){
+  if(p === 0) return "0%";
+  if(p > 0 && p < 0.01) return "<0.01%";
+  if(p >= 99.99 && p < 100) return ">99.99%";
+  if(p === 100) return "100%";
+  return p.toFixed(2) + "%";
+}
+
+function renderStandings() {
+    let html = `<tr><th>#</th><th style="text-align:left">Team</th><th>W-L</th><th>Diff</th><th>Rem</th></tr>`;
+    teams.forEach((t, i) => {
+        let cls = i < 2 ? "row-top2" : (i < 6 ? "row-playoff" : "row-out");
+        let rem = 0;
+        weeks.forEach(w => w.matches.forEach(m => {
+            if(m.sa === undefined && (m.A == t.name || m.B == t.name)) rem++;
+        }));
+        html += `<tr class="${cls}"><td>${i+1}</td><td style="text-align:left">${t.name}</td><td>${t.mw}-${t.ml}</td><td>${t.gw-t.gl}</td><td>${rem}</td></tr>`;
+    });
+    document.getElementById("standings").innerHTML = html;
+}
+
+function renderChance() {
+    let html = "";
+    let sorted = [...teams].sort((a,b) => probability[b.name].playoff - probability[a.name].playoff);
+
+    sorted.forEach(t => {
+        let p = probability[t.name].playoff;
+        let t2 = probability[t.name].top2;
+        let color = "var(--text-dim)";
+        let status = "CONTENDER";
+
+        if(p >= 99.9) { color = "var(--playoff)"; status = "QUALIFIED"; }
+        else if(p <= 0.1) { color = "var(--out)"; status = "ELIMINATED"; }
+        else if(p > 75) { color = "var(--accent)"; status = "SAFE ZONE"; }
+        else if(p < 25) { color = "var(--danger)"; status = "DANGER ZONE"; }
+
+        html += `
+        <div class="chance-card" onclick="showAnalysis('${t.name}')">
+            <div class="status-indicator" style="background:${color}"></div>
+            <div class="team-info">
+                <div class="status-label" style="color:${color}">${status}</div>
+                <div class="name">${t.name}</div>
+            </div>
+            <div class="metrics">
+                <div class="metric-item">
+                    <div class="metric-value ${p >= 99.9 ? 'locked' : (p <= 0.1 ? 'dead' : '')}">${formatPercent(p)}</div>
+                    <div class="metric-label">Playoff</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value" style="color:${t2 > 50 ? 'var(--top2)' : 'white'}">${formatPercent(t2)}</div>
+                    <div class="metric-label">Top 2</div>
+                </div>
+            </div>
+        </div>`;
+    });
+    document.getElementById("chanceTable").innerHTML = html;
+}
+
+function showAnalysis(teamName) {
+    const t = teams.find(x => x.name == teamName);
+    const p = probability[teamName].playoff;
+    const t2 = probability[teamName].top2;
+    
+    let rem = 0;
+    weeks.forEach(w => w.matches.forEach(m => {
+        if(m.sa === undefined && (m.A == teamName || m.B == teamName)) rem++;
+    }));
+
+    document.getElementById("modalTeamName").innerText = teamName;
+    
+    let statusLabel = "CONTENDER";
+    let statusColor = "var(--text-dim)";
+
+    if(p >= 99.9) { statusLabel = "QUALIFIED"; statusColor = "var(--playoff)"; }
+    else if(p <= 0.1) { statusLabel = "ELIMINATED"; statusColor = "var(--out)"; }
+    else if(p > 75) { statusLabel = "SAFE ZONE"; statusColor = "var(--accent)"; }
+    else if(p < 25) { statusLabel = "DANGER ZONE"; statusColor = "var(--danger)"; }
+
+    const statusElem = document.getElementById("modalTeamStatus");
+    statusElem.innerText = statusLabel;
+    statusElem.style.color = statusColor;
+    
+    let playoffText = "";
+    if(p >= 99.9) playoffText = "Tim sudah mengunci tiket Playoff secara matematis.";
+    else if(p <= 0.1) playoffText = "Tim sudah tidak memiliki peluang lolos ke Playoff.";
+    else playoffText = `Membutuhkan setidaknya ${Math.max(1, Math.ceil(9 - t.mw))} kemenangan lagi dari ${rem} match tersisa untuk posisi aman.`;
+    
+    let upperText = "";
+    if(t2 >= 99.9) upperText = "Sudah mengamankan Upper Bracket (Top 2).";
+    else if(t2 <= 0.1) upperText = "Peluang Top 2 tertutup.";
+    else upperText = `Berjarak ${Math.max(1, teams[1].mw - t.mw)} poin dari peringkat 2 saat ini.`;
+
+    let memo = "";
+    if(p > 80) memo = "Sangat stabil. Fokus menjaga performa untuk seeding terbaik.";
+    else if(p > 40) memo = "Posisi krusial. Setiap match berikutnya adalah penentu hidup mati.";
+    else memo = "Bergantung pada hasil tim lain. Harus memenangkan semua sisa match.";
+
+    document.getElementById("playoffScenario").innerText = playoffText;
+    document.getElementById("upperScenario").innerText = upperText;
+    document.getElementById("aiMemo").innerText = memo;
+    document.getElementById("modalOverlay").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("modalOverlay").style.display = "none";
+}
+
+function renderMatches() {
+    let html = "";
+    weeks.forEach((w, wi) => {
+        html += `<div class="week-title">${w.name}</div>`;
+        w.matches.forEach((m, mi) => {
+            html += `
+            <div class="match-card">
+                <div class="team-name" style="text-align:left">${m.A}</div>
+                <div class="match-score-container">
+                    <select onchange="update(${wi},${mi})" id="a${wi}_${mi}">
+                        <option value="">-</option>
+                        <option ${m.sa==0?'selected':''}>0</option>
+                        <option ${m.sa==1?'selected':''}>1</option>
+                        <option ${m.sa==2?'selected':''}>2</option>
+                    </select>
+                    <span style="opacity: 0.5; font-size: 0.7rem; font-weight: 800;">VS</span>
+                    <select onchange="update(${wi},${mi})" id="b${wi}_${mi}">
+                        <option value="">-</option>
+                        <option ${m.sb==0?'selected':''}>0</option>
+                        <option ${m.sb==1?'selected':''}>1</option>
+                        <option ${m.sb==2?'selected':''}>2</option>
+                    </select>
+                </div>
+                <div class="team-name" style="text-align:right">${m.B}</div>
+            </div>`;
+        });
+    });
+    document.getElementById("matches").innerHTML = html;
+}
+
+function update(wi, mi) {
+    let a = parseInt(document.getElementById(`a${wi}_${mi}`).value);
+    let b = parseInt(document.getElementById(`b${wi}_${mi}`).value);
+    if(isNaN(a) || isNaN(b)) return;
+    if(!((a==2 && b<=1) || (b==2 && a<=1))) {
+        alert("Skor harus 2-0 atau 2-1");
+        return;
+    }
+    weeks[wi].matches[mi].sa = a;
+    weeks[wi].matches[mi].sb = b;
+    localStorage.setItem("mplData_pro", JSON.stringify(weeks));
+    refresh();
+}
+
+function resetData() {
+    if(confirm("Hapus semua data prediksi?")) {
+        localStorage.removeItem("mplData_pro");
+        location.reload();
+    }
+}
+
+loadData();
+</script>
+</body>
+</html>

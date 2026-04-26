@@ -1,0 +1,121 @@
+{
+  "weeks": [
+    {
+      "name": "Week 1",
+      "matches": [
+        { "A": "BIGETRON", "B": "ALTER EGO", "sa": 2, "sb": 1 },
+        { "A": "NAVI", "B": "RRQ", "sa": 2, "sb": 0 },
+        { "A": "EVOS", "B": "GEEK FAM", "sa": 2, "sb": 0 },
+        { "A": "ALTER EGO", "B": "ONIC", "sa": 0, "sb": 2 },
+        { "A": "TLID", "B": "NAVI", "sa": 2, "sb": 1 },
+        { "A": "DEWA", "B": "BIGETRON", "sa": 2, "sb": 0 },
+        { "A": "EVOS", "B": "TLID", "sa": 0, "sb": 2 },
+        { "A": "RRQ", "B": "ONIC", "sa": 0, "sb": 2 }
+      ]
+    },
+    {
+      "name": "Week 2",
+      "matches": [
+        { "A": "ONIC", "B": "GEEK FAM", "sa": 2, "sb": 0 },
+        { "A": "DEWA", "B": "NAVI", "sa": 2, "sb": 0 },
+        { "A": "GEEK FAM", "B": "BIGETRON", "sa": 2, "sb": 0 },
+        { "A": "ALTER EGO", "B": "EVOS", "sa": 2, "sb": 1 },
+        { "A": "TLID", "B": "DEWA", "sa": 2, "sb": 1 },
+        { "A": "NAVI", "B": "ALTER EGO", "sa": 1, "sb": 2 },
+        { "A": "RRQ", "B": "TLID", "sa": 0, "sb": 2 },
+        { "A": "BIGETRON", "B": "EVOS", "sa": 2, "sb": 1 }
+      ]
+    },
+    {
+      "name": "Week 3",
+      "matches": [
+        { "A": "ONIC", "B": "DEWA", "sa": 2, "sb": 1 },
+        { "A": "NAVI", "B": "EVOS", "sa": 0, "sb": 2 },
+        { "A": "TLID", "B": "GEEK FAM", "sa": 0, "sb": 2 },
+        { "A": "ONIC", "B": "BIGETRON", "sa": 1, "sb": 2 },
+        { "A": "RRQ", "B": "ALTER EGO", "sa": 1, "sb": 2 },
+        { "A": "BIGETRON", "B": "NAVI", "sa": 1, "sb": 2 },
+        { "A": "GEEK FAM", "B": "RRQ", "sa": 2, "sb": 1 },
+        { "A": "ALTER EGO", "B": "DEWA", "sa": 0, "sb": 2 }
+      ]
+    },
+    {
+      "name": "Week 4",
+      "matches": [
+        { "A": "NAVI", "B": "ONIC", "sa": 0, "sb": 2 },
+        { "A": "EVOS", "B": "DEWA", "sa": 2, "sb": 0 },
+        { "A": "TLID", "B": "BIGETRON", "sa": 1, "sb": 2 },
+        { "A": "RRQ", "B": "EVOS", "sa": 0, "sb": 2 },
+        { "A": "GEEK FAM", "B": "ALTER EGO", "sa": 1, "sb": 2 },
+        { "A": "ONIC", "B": "TLID", "sa": 2, "sb": 0 },
+        { "A": "BIGETRON", "B": "RRQ", "sa": 2, "sb": 1 },
+        { "A": "DEWA", "B": "GEEK FAM", "sa": 2, "sb": 0 }
+      ]
+    },
+    {
+      "name": "Week 5",
+      "matches": [
+        { "A": "GEEK FAM", "B": "NAVI", "sa": 0, "sb": 2 },
+        { "A": "EVOS", "B": "ONIC", "sa": 0, "sb": 2 },
+        { "A": "DEWA", "B": "RRQ", "sa": 2, "sb": 0  },
+        { "A": "ALTER EGO", "B": "TLID", "sa": 1, "sb": 2  },
+        { "A": "EVOS", "B": "BIGETRON", "sa": 0, "sb": 2  },
+        { "A": "ALTER EGO", "B": "NAVI" },
+        { "A": "GEEK FAM", "B": "ONIC" },
+        { "A": "DEWA", "B": "TLID" }
+      ]
+    },
+    {
+      "name": "Week 6",
+      "matches": [
+        { "A": "NAVI", "B": "DEWA" },
+        { "A": "ALTER EGO", "B": "GEEK FAM" },
+        { "A": "EVOS", "B": "ALTER EGO" },
+        { "A": "TLID", "B": "ONIC" },
+        { "A": "RRQ", "B": "BIGETRON" },
+        { "A": "NAVI", "B": "TLID" },
+        { "A": "ONIC", "B": "RRQ" },
+        { "A": "GEEK FAM", "B": "EVOS" }
+      ]
+    },
+    {
+      "name": "Week 7",
+      "matches": [
+        { "A": "GEEK FAM", "B": "DEWA" },
+        { "A": "BIGETRON", "B": "TLID" },
+        { "A": "DEWA", "B": "ALTER EGO" },
+        { "A": "EVOS", "B": "RRQ" },
+        { "A": "ONIC", "B": "NAVI" },
+        { "A": "RRQ", "B": "GEEK FAM" },
+        { "A": "NAVI", "B": "BIGETRON" },
+        { "A": "TLID", "B": "EVOS" }
+      ]
+    },
+    {
+      "name": "Week 8",
+      "matches": [
+        { "A": "BIGETRON", "B": "GEEK FAM" },
+        { "A": "DEWA", "B": "ONIC" },
+        { "A": "EVOS", "B": "NAVI" },
+        { "A": "TLID", "B": "RRQ" },
+        { "A": "ONIC", "B": "ALTER EGO" },
+        { "A": "DEWA", "B": "EVOS" },
+        { "A": "ALTER EGO", "B": "BIGETRON" },
+        { "A": "RRQ", "B": "NAVI" }
+      ]
+    },
+    {
+      "name": "Week 9",
+      "matches": [
+        { "A": "BIGETRON", "B": "DEWA" },
+        { "A": "TLID", "B": "ALTER EGO" },
+        { "A": "GEEK FAM", "B": "TLID" },
+        { "A": "ALTER EGO", "B": "RRQ" },
+        { "A": "BIGETRON", "B": "ONIC" },
+        { "A": "RRQ", "B": "DEWA" },
+        { "A": "ONIC", "B": "EVOS" },
+        { "A": "NAVI", "B": "GEEK FAM" }
+      ]
+    }
+  ]
+}
