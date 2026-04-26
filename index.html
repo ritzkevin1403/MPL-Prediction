@@ -110,9 +110,9 @@
         tr td:first-child { border-radius: 10px 0 0 10px; }
         tr td:last-child { border-radius: 0 10px 10px 0; }
 
-        .row-top2 td { border-left: 4px solid var(--top2); }
-        .row-playoff td { border-left: 4px solid var(--playoff); }
-        .row-out td { border-left: 4px solid var(--out); opacity: 0.6; }
+        .row-top2 td { border-left: 4px solid #22c55e; }   
+        .row-playoff td { border-left: 4px solid #facc15; } 
+        .row-out td {border-left: 4px solid #ef4444; }
 
         #chanceTable {
             display: flex;
@@ -168,7 +168,6 @@
         }
         .analysis-title { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 800; margin-bottom: 5px; }
 
-        /* --- CSS MATCHES PERBAIKAN HORIZONTAL HP --- */
         .matches-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -265,7 +264,7 @@
     <div class="grid-layout">
         <div class="card">
             <div class="section-header">
-                <h3>📊 Standings Tracker</h3>
+                <h3>📊 Standings</h3>
                 <button class="reset-btn" onclick="resetData()">Reset Simulation</button>
             </div>
             <div style="overflow-x: auto;">
@@ -273,7 +272,7 @@
             </div>
 
             <div class="section-header" style="margin-top: 30px;">
-                <h3>🎮 Match Predictions</h3>
+                <h3>🎮 Match</h3>
             </div>
             <div class="matches-grid" id="matches"></div>
         </div>
@@ -281,7 +280,7 @@
         <div>
             <div class="card" style="position: sticky; top: 20px;">
                 <div class="section-header">
-                    <h3>🎯 Win Probability</h3>
+                    <h3>🎯 Probability</h3>
                 </div>
                 <div id="chanceTable"></div>
             </div>
@@ -411,14 +410,45 @@ function formatPercent(p){
 
 function renderStandings() {
     let html = `<tr><th>#</th><th style="text-align:left">Team</th><th>W-L</th><th>Diff</th><th>Rem</th></tr>`;
+    
     teams.forEach((t, i) => {
-        let cls = i < 2 ? "row-top2" : (i < 6 ? "row-playoff" : "row-out");
+        let p = probability[t.name].playoff;
+        let t2 = probability[t.name].top2;
+
+        let cls = "";
+        let style = "";
+
+        // warna berdasarkan posisi
+        if(i < 2) cls = "row-top2";        // hijau (top 2)
+        else if(i < 6) cls = "row-playoff"; // kuning (3-6)
+        else cls = "row-out";              // merah (7-9)
+
+        // override kalau sudah fix
+        if(t2 >= 99.9) {
+            style = "background: rgba(34, 197, 94, 0.25);"; // hijau (fix top 2)
+        }
+        else if(p >= 99.9) {
+            style = "background: rgba(250, 204, 21, 0.2);"; // kuning soft (fix playoff)
+        }
+        else if(p <= 0.1) {
+            style = "opacity: 0.35;"; // redup (eliminated)
+        }
+
         let rem = 0;
         weeks.forEach(w => w.matches.forEach(m => {
             if(m.sa === undefined && (m.A == t.name || m.B == t.name)) rem++;
         }));
-        html += `<tr class="${cls}"><td>${i+1}</td><td style="text-align:left">${t.name}</td><td>${t.mw}-${t.ml}</td><td>${t.gw-t.gl}</td><td>${rem}</td></tr>`;
+
+        html += `
+        <tr class="${cls}" style="${style}">
+            <td>${i+1}</td>
+            <td style="text-align:left">${t.name}</td>
+            <td>${t.mw}-${t.ml}</td>
+            <td>${t.gw-t.gl}</td>
+            <td>${rem}</td>
+        </tr>`;
     });
+
     document.getElementById("standings").innerHTML = html;
 }
 
@@ -429,13 +459,26 @@ function renderChance() {
     sorted.forEach(t => {
         let p = probability[t.name].playoff;
         let t2 = probability[t.name].top2;
-        let color = "var(--text-dim)";
-        let status = "CONTENDER";
+        let color = "transparent";
+        let status = "";
 
-        if(p >= 99.9) { color = "var(--playoff)"; status = "QUALIFIED"; }
-        else if(p <= 0.1) { color = "var(--out)"; status = "ELIMINATED"; }
-        else if(p > 75) { color = "var(--accent)"; status = "SAFE ZONE"; }
-        else if(p < 25) { color = "var(--danger)"; status = "DANGER ZONE"; }
+        // STATUS (TIDAK DIUBAH KECUALI FIX ONLY)
+        if(t2 >= 99.9) {
+            color = "var(--top2)";
+            status = "TOP 2";
+        }
+        else if(p >= 99.9) {
+            color = "var(--playoff)";
+            status = "PLAYOFF";
+        }
+        else if(p <= 0.1) {
+            color = "var(--out)";
+            status = "ELIMINATED";
+        }
+        else {
+            color = "transparent";
+            status = "";
+        }
 
         html += `
         <div class="chance-card" onclick="showAnalysis('${t.name}')">
@@ -445,17 +488,29 @@ function renderChance() {
                 <div class="name">${t.name}</div>
             </div>
             <div class="metrics">
+
                 <div class="metric-item">
-                    <div class="metric-value ${p >= 99.9 ? 'locked' : (p <= 0.1 ? 'dead' : '')}">${formatPercent(p)}</div>
+                    <div class="metric-value" style="
+                        color: ${p >= 99.9 ? '#22c55e' : (p <= 0.1 ? '#ef4444' : (p <= 5 ? '#facc15' : 'white'))};
+                    ">
+                        ${formatPercent(p)}
+                    </div>
                     <div class="metric-label">Playoff</div>
                 </div>
+
                 <div class="metric-item">
-                    <div class="metric-value" style="color:${t2 > 50 ? 'var(--top2)' : 'white'}">${formatPercent(t2)}</div>
+                    <div class="metric-value" style="
+                        color: ${t2 >= 99.9 ? '#22c55e' : (t2 <= 0.1 ? '#ef4444' : (t2 <= 5 ? '#facc15' : 'white'))};
+                    ">
+                        ${formatPercent(t2)}
+                    </div>
                     <div class="metric-label">Top 2</div>
                 </div>
+
             </div>
         </div>`;
     });
+
     document.getElementById("chanceTable").innerHTML = html;
 }
 
@@ -470,14 +525,25 @@ function showAnalysis(teamName) {
     }));
 
     document.getElementById("modalTeamName").innerText = teamName;
-    
-    let statusLabel = "CONTENDER";
-    let statusColor = "var(--text-dim)";
+    let statusLabel = "";
+    let statusColor = "transparent";
 
-    if(p >= 99.9) { statusLabel = "QUALIFIED"; statusColor = "var(--playoff)"; }
-    else if(p <= 0.1) { statusLabel = "ELIMINATED"; statusColor = "var(--out)"; }
-    else if(p > 75) { statusLabel = "SAFE ZONE"; statusColor = "var(--accent)"; }
-    else if(p < 25) { statusLabel = "DANGER ZONE"; statusColor = "var(--danger)"; }
+    if(t2 >= 50) {
+        statusLabel = "TOP 2";
+        statusColor = "var(--top2)";
+    }
+    else if(p >= 99.9) {
+        statusLabel = "PLAYOFF";
+        statusColor = "var(--playoff)";
+    }
+    else if(p <= 0.1) {
+        statusLabel = "ELIMINATED";
+        statusColor = "var(--out)";
+    }
+    else {
+        statusLabel = "";
+        statusColor = "transparent";
+    }
 
     const statusElem = document.getElementById("modalTeamStatus");
     statusElem.innerText = statusLabel;
