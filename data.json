@@ -71,7 +71,7 @@
         { "A": "NAVI", "B": "DEWA", "sa": 1, "sb": 2 },
         { "A": "ALTER EGO", "B": "GEEK FAM", "sa": 2, "sb": 1  },
         { "A": "EVOS", "B": "ALTER EGO", "sa": 2, "sb": 1 },
-        { "A": "TLID", "B": "ONIC" },
+        { "A": "TLID", "B": "ONIC", "sa": 0, "sb": 2 },
         { "A": "RRQ", "B": "BIGETRON" },
         { "A": "NAVI", "B": "TLID" },
         { "A": "ONIC", "B": "RRQ" },
