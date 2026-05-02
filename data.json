@@ -70,7 +70,7 @@
       "matches": [
         { "A": "NAVI", "B": "DEWA", "sa": 1, "sb": 2 },
         { "A": "ALTER EGO", "B": "GEEK FAM", "sa": 2, "sb": 1  },
-        { "A": "EVOS", "B": "ALTER EGO" },
+        { "A": "EVOS", "B": "ALTER EGO", "sa": 2, "sb": 1 },
         { "A": "TLID", "B": "ONIC" },
         { "A": "RRQ", "B": "BIGETRON" },
         { "A": "NAVI", "B": "TLID" },
