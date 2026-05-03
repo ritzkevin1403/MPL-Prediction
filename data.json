@@ -75,7 +75,7 @@
         { "A": "RRQ", "B": "BIGETRON", "sa": 2, "sb": 0 },
         { "A": "NAVI", "B": "TLID", "sa": 1, "sb": 2 },
         { "A": "ONIC", "B": "RRQ", "sa": 2, "sb": 0 },
-        { "A": "GEEK FAM", "B": "EVOS" }
+        { "A": "GEEK FAM", "B": "EVOS", "sa": 2, "sb": 0  }
       ]
     },
     {
