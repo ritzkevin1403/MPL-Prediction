@@ -81,7 +81,7 @@
     {
       "name": "Week 7",
       "matches": [
-        { "A": "GEEK FAM", "B": "DEWA" },
+        { "A": "GEEK FAM", "B": "DEWA", "sa": 1, "sb": 2  },
         { "A": "BIGETRON", "B": "TLID" },
         { "A": "DEWA", "B": "ALTER EGO" },
         { "A": "EVOS", "B": "RRQ" },
