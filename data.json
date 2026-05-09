@@ -84,8 +84,8 @@
         { "A": "GEEK FAM", "B": "DEWA", "sa": 1, "sb": 2  },
         { "A": "BIGETRON", "B": "TLID", "sa": 0, "sb": 2 },
         { "A": "DEWA", "B": "ALTER EGO", "sa": 1, "sb": 2 },
-        { "A": "EVOS", "B": "RRQ" },
-        { "A": "ONIC", "B": "NAVI" },
+        { "A": "EVOS", "B": "RRQ", "sa": 2, "sb": 0  },
+        { "A": "ONIC", "B": "NAVI", "sa": 2, "sb": 0  },
         { "A": "RRQ", "B": "GEEK FAM" },
         { "A": "NAVI", "B": "BIGETRON" },
         { "A": "TLID", "B": "EVOS" }
