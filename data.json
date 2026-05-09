@@ -83,7 +83,7 @@
       "matches": [
         { "A": "GEEK FAM", "B": "DEWA", "sa": 1, "sb": 2  },
         { "A": "BIGETRON", "B": "TLID", "sa": 0, "sb": 2 },
-        { "A": "DEWA", "B": "ALTER EGO" },
+        { "A": "DEWA", "B": "ALTER EGO", "sa": 1, "sb": 2 },
         { "A": "EVOS", "B": "RRQ" },
         { "A": "ONIC", "B": "NAVI" },
         { "A": "RRQ", "B": "GEEK FAM" },
