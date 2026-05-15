@@ -95,7 +95,7 @@
       "name": "Week 8",
       "matches": [
         { "A": "BIGETRON", "B": "GEEK FAM", "sa": 0, "sb": 2 },
-        { "A": "DEWA", "B": "ONIC" },
+        { "A": "DEWA", "B": "ONIC", "sa": 0, "sb": 2 },
         { "A": "EVOS", "B": "NAVI" },
         { "A": "TLID", "B": "RRQ" },
         { "A": "ONIC", "B": "ALTER EGO" },
