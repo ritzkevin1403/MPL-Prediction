@@ -88,13 +88,13 @@
         { "A": "ONIC", "B": "NAVI", "sa": 2, "sb": 0  },
         { "A": "RRQ", "B": "GEEK FAM", "sa": 0, "sb": 2 },
         { "A": "NAVI", "B": "BIGETRON", "sa": 2, "sb": 1 },
-        { "A": "TLID", "B": "EVOS" }
+        { "A": "TLID", "B": "EVOS", "sa": 0, "sb": 2 }
       ]
     },
     {
       "name": "Week 8",
       "matches": [
-        { "A": "BIGETRON", "B": "GEEK FAM" },
+        { "A": "BIGETRON", "B": "GEEK FAM", "sa": 0, "sb": 2 },
         { "A": "DEWA", "B": "ONIC" },
         { "A": "EVOS", "B": "NAVI" },
         { "A": "TLID", "B": "RRQ" },
