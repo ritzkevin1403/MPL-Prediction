@@ -100,7 +100,7 @@
         { "A": "TLID", "B": "RRQ", "sa": 2, "sb": 0 },
         { "A": "ONIC", "B": "ALTER EGO", "sa": 2, "sb": 1 },
         { "A": "DEWA", "B": "EVOS", "sa": 0, "sb": 2 },
-        { "A": "ALTER EGO", "B": "BIGETRON" },
+        { "A": "ALTER EGO", "B": "BIGETRON", "sa": 0, "sb": 2 },
         { "A": "RRQ", "B": "NAVI" }
       ]
     },
