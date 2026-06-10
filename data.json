@@ -107,14 +107,14 @@
     {
       "name": "Week 9",
       "matches": [
-        { "A": "BIGETRON", "B": "DEWA" },
-        { "A": "TLID", "B": "ALTER EGO" },
-        { "A": "GEEK FAM", "B": "TLID" },
-        { "A": "ALTER EGO", "B": "RRQ" },
-        { "A": "BIGETRON", "B": "ONIC" },
-        { "A": "RRQ", "B": "DEWA" },
-        { "A": "ONIC", "B": "EVOS" },
-        { "A": "NAVI", "B": "GEEK FAM" }
+        { "A": "BIGETRON", "B": "DEWA", "sa": 2, "sb": 1 },
+        { "A": "TLID", "B": "ALTER EGO", "sa": 2, "sb": 0 },
+        { "A": "GEEK FAM", "B": "TLID", "sa": 0, "sb": 2 },
+        { "A": "ALTER EGO", "B": "RRQ", "sa": 1, "sb": 2 },
+        { "A": "BIGETRON", "B": "ONIC", "sa": 2, "sb": 1 },
+        { "A": "RRQ", "B": "DEWA", "sa": 1, "sb": 2 },
+        { "A": "ONIC", "B": "EVOS", "sa": 2, "sb": 0 },
+        { "A": "NAVI", "B": "GEEK FAM", "sa": 1, "sb": 2 }
       ]
     }
   ]
