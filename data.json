@@ -2,119 +2,254 @@
   "weeks": [
     {
       "name": "Week 1",
-      "matches": [
-        { "A": "BIGETRON", "B": "ALTER EGO", "sa": 2, "sb": 1 },
-        { "A": "NAVI", "B": "RRQ", "sa": 2, "sb": 0 },
-        { "A": "EVOS", "B": "GEEK FAM", "sa": 2, "sb": 0 },
-        { "A": "ALTER EGO", "B": "ONIC", "sa": 0, "sb": 2 },
-        { "A": "TLID", "B": "NAVI", "sa": 2, "sb": 1 },
-        { "A": "DEWA", "B": "BIGETRON", "sa": 2, "sb": 0 },
-        { "A": "EVOS", "B": "TLID", "sa": 0, "sb": 2 },
-        { "A": "RRQ", "B": "ONIC", "sa": 0, "sb": 2 }
+      "days": [
+        {
+          "day": "Day 1",
+          "matches": [
+            { "A": "EVOS", "B": "RRQ", "sa": null, "sb": null },
+            { "A": "NAVI", "B": "ALTER EGO", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "matches": [
+            { "A": "TLID", "B": "GEEK FAM", "sa": null, "sb": null },
+            { "A": "DEWA", "B": "RRQ", "sa": null, "sb": null },
+            { "A": "EVOS", "B": "NAVI", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "matches": [
+            { "A": "TLID", "B": "DEWA", "sa": null, "sb": null },
+            { "A": "GEEK FAM", "B": "BIGETRON", "sa": null, "sb": null },
+            { "A": "ALTER EGO", "B": "ONIC", "sa": null, "sb": null }
+          ]
+        }
       ]
     },
     {
       "name": "Week 2",
-      "matches": [
-        { "A": "ONIC", "B": "GEEK FAM", "sa": 2, "sb": 0 },
-        { "A": "DEWA", "B": "NAVI", "sa": 2, "sb": 0 },
-        { "A": "GEEK FAM", "B": "BIGETRON", "sa": 2, "sb": 0 },
-        { "A": "ALTER EGO", "B": "EVOS", "sa": 2, "sb": 1 },
-        { "A": "TLID", "B": "DEWA", "sa": 2, "sb": 1 },
-        { "A": "NAVI", "B": "ALTER EGO", "sa": 1, "sb": 2 },
-        { "A": "RRQ", "B": "TLID", "sa": 0, "sb": 2 },
-        { "A": "BIGETRON", "B": "EVOS", "sa": 2, "sb": 1 }
+      "days": [
+        {
+          "day": "Day 1",
+          "matches": [
+            { "A": "TLID", "B": "NAVI", "sa": null, "sb": null },
+            { "A": "BIGETRON", "B": "DEWA", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "matches": [
+            { "A": "TLID", "B": "EVOS", "sa": null, "sb": null },
+            { "A": "NAVI", "B": "GEEK FAM", "sa": null, "sb": null },
+            { "A": "ONIC", "B": "RRQ", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "matches": [
+            { "A": "DEWA", "B": "ALTER EGO", "sa": null, "sb": null },
+            { "A": "ONIC", "B": "BIGETRON", "sa": null, "sb": null },
+            { "A": "GEEK FAM", "B": "EVOS", "sa": null, "sb": null }
+          ]
+        }
       ]
     },
     {
       "name": "Week 3",
-      "matches": [
-        { "A": "ONIC", "B": "DEWA", "sa": 2, "sb": 1 },
-        { "A": "NAVI", "B": "EVOS", "sa": 0, "sb": 2 },
-        { "A": "TLID", "B": "GEEK FAM", "sa": 0, "sb": 2 },
-        { "A": "ONIC", "B": "BIGETRON", "sa": 1, "sb": 2 },
-        { "A": "RRQ", "B": "ALTER EGO", "sa": 1, "sb": 2 },
-        { "A": "BIGETRON", "B": "NAVI", "sa": 1, "sb": 2 },
-        { "A": "GEEK FAM", "B": "RRQ", "sa": 2, "sb": 1 },
-        { "A": "ALTER EGO", "B": "DEWA", "sa": 0, "sb": 2 }
+      "days": [
+        {
+          "day": "Day 1",
+          "matches": [
+            { "A": "BIGETRON", "B": "NAVI", "sa": null, "sb": null },
+            { "A": "DEWA", "B": "GEEK FAM", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "matches": [
+            { "A": "TLID", "B": "ONIC", "sa": null, "sb": null },
+            { "A": "ALTER EGO", "B": "EVOS", "sa": null, "sb": null },
+            { "A": "RRQ", "B": "BIGETRON", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "matches": [
+            { "A": "NAVI", "B": "ONIC", "sa": null, "sb": null },
+            { "A": "GEEK FAM", "B": "RRQ", "sa": null, "sb": null },
+            { "A": "TLID", "B": "ALTER EGO", "sa": null, "sb": null }
+          ]
+        }
       ]
     },
     {
       "name": "Week 4",
-      "matches": [
-        { "A": "NAVI", "B": "ONIC", "sa": 0, "sb": 2 },
-        { "A": "EVOS", "B": "DEWA", "sa": 2, "sb": 0 },
-        { "A": "TLID", "B": "BIGETRON", "sa": 1, "sb": 2 },
-        { "A": "RRQ", "B": "EVOS", "sa": 0, "sb": 2 },
-        { "A": "GEEK FAM", "B": "ALTER EGO", "sa": 1, "sb": 2 },
-        { "A": "ONIC", "B": "TLID", "sa": 2, "sb": 0 },
-        { "A": "BIGETRON", "B": "RRQ", "sa": 2, "sb": 1 },
-        { "A": "DEWA", "B": "GEEK FAM", "sa": 2, "sb": 0 }
+      "days": [
+        {
+          "day": "Day 1",
+          "matches": [
+            { "A": "NAVI", "B": "DEWA", "sa": null, "sb": null },
+            { "A": "TLID", "B": "RRQ", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "matches": [
+            { "A": "DEWA", "B": "ONIC", "sa": null, "sb": null },
+            { "A": "EVOS", "B": "BIGETRON", "sa": null, "sb": null },
+            { "A": "ALTER EGO", "B": "GEEK FAM", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "matches": [
+            { "A": "RRQ", "B": "NAVI", "sa": null, "sb": null },
+            { "A": "ONIC", "B": "EVOS", "sa": null, "sb": null },
+            { "A": "BIGETRON", "B": "ALTER EGO", "sa": null, "sb": null }
+          ]
+        }
       ]
     },
     {
       "name": "Week 5",
-      "matches": [
-        { "A": "GEEK FAM", "B": "NAVI", "sa": 0, "sb": 2 },
-        { "A": "EVOS", "B": "ONIC", "sa": 0, "sb": 2 },
-        { "A": "DEWA", "B": "RRQ", "sa": 2, "sb": 0  },
-        { "A": "ALTER EGO", "B": "TLID", "sa": 1, "sb": 2  },
-        { "A": "EVOS", "B": "BIGETRON", "sa": 0, "sb": 2  },
-        { "A": "ALTER EGO", "B": "NAVI", "sa": 2, "sb": 1 },
-        { "A": "GEEK FAM", "B": "ONIC", "sa": 2, "sb": 1 },
-        { "A": "DEWA", "B": "TLID", "sa": 2, "sb": 0 }
+      "days": [
+        {
+          "day": "Day 1",
+          "matches": [
+            { "A": "EVOS", "B": "DEWA", "sa": null, "sb": null },
+            { "A": "GEEK FAM", "B": "ONIC", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "matches": [
+            { "A": "TLID", "B": "BIGETRON", "sa": null, "sb": null },
+            { "A": "ALTER EGO", "B": "RRQ", "sa": null, "sb": null },
+            { "A": "NAVI", "B": "EVOS", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "matches": [
+            { "A": "GEEK FAM", "B": "TLID", "sa": null, "sb": null },
+            { "A": "ONIC", "B": "ALTER EGO", "sa": null, "sb": null },
+            { "A": "RRQ", "B": "DEWA", "sa": null, "sb": null }
+          ]
+        }
       ]
     },
     {
       "name": "Week 6",
-      "matches": [
-        { "A": "NAVI", "B": "DEWA", "sa": 1, "sb": 2 },
-        { "A": "ALTER EGO", "B": "GEEK FAM", "sa": 2, "sb": 1  },
-        { "A": "EVOS", "B": "ALTER EGO", "sa": 2, "sb": 1 },
-        { "A": "TLID", "B": "ONIC", "sa": 0, "sb": 2 },
-        { "A": "RRQ", "B": "BIGETRON", "sa": 2, "sb": 0 },
-        { "A": "NAVI", "B": "TLID", "sa": 1, "sb": 2 },
-        { "A": "ONIC", "B": "RRQ", "sa": 2, "sb": 0 },
-        { "A": "GEEK FAM", "B": "EVOS", "sa": 2, "sb": 0  }
+      "days": [
+        {
+          "day": "Day 1",
+          "matches": [
+            { "A": "ONIC", "B": "GEEK FAM", "sa": null, "sb": null },
+            { "A": "DEWA", "B": "EVOS", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "matches": [
+            { "A": "GEEK FAM", "B": "NAVI", "sa": null, "sb": null },
+            { "A": "RRQ", "B": "ALTER EGO", "sa": null, "sb": null },
+            { "A": "BIGETRON", "B": "TLID", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "matches": [
+            { "A": "ALTER EGO", "B": "DEWA", "sa": null, "sb": null },
+            { "A": "BIGETRON", "B": "ONIC", "sa": null, "sb": null },
+            { "A": "EVOS", "B": "TLID", "sa": null, "sb": null }
+          ]
+        }
       ]
     },
     {
       "name": "Week 7",
-      "matches": [
-        { "A": "GEEK FAM", "B": "DEWA", "sa": 1, "sb": 2  },
-        { "A": "BIGETRON", "B": "TLID", "sa": 0, "sb": 2 },
-        { "A": "DEWA", "B": "ALTER EGO", "sa": 1, "sb": 2 },
-        { "A": "EVOS", "B": "RRQ", "sa": 2, "sb": 0  },
-        { "A": "ONIC", "B": "NAVI", "sa": 2, "sb": 0  },
-        { "A": "RRQ", "B": "GEEK FAM", "sa": 0, "sb": 2 },
-        { "A": "NAVI", "B": "BIGETRON", "sa": 2, "sb": 1 },
-        { "A": "TLID", "B": "EVOS", "sa": 0, "sb": 2 }
+      "days": [
+        {
+          "day": "Day 1",
+          "matches": [
+            { "A": "GEEK FAM", "B": "BIGETRON", "sa": null, "sb": null },
+            { "A": "DEWA", "B": "TLID", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "matches": [
+            { "A": "ALTER EGO", "B": "NAVI", "sa": null, "sb": null },
+            { "A": "BIGETRON", "B": "RRQ", "sa": null, "sb": null },
+            { "A": "GEEK FAM", "B": "DEWA", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "matches": [
+            { "A": "ALTER EGO", "B": "TLID", "sa": null, "sb": null },
+            { "A": "RRQ", "B": "EVOS", "sa": null, "sb": null },
+            { "A": "ONIC", "B": "NAVI", "sa": null, "sb": null }
+          ]
+        }
       ]
     },
     {
       "name": "Week 8",
-      "matches": [
-        { "A": "BIGETRON", "B": "GEEK FAM", "sa": 0, "sb": 2 },
-        { "A": "DEWA", "B": "ONIC", "sa": 0, "sb": 2 },
-        { "A": "EVOS", "B": "NAVI", "sa": 0, "sb": 2 },
-        { "A": "TLID", "B": "RRQ", "sa": 2, "sb": 0 },
-        { "A": "ONIC", "B": "ALTER EGO", "sa": 2, "sb": 1 },
-        { "A": "DEWA", "B": "EVOS", "sa": 0, "sb": 2 },
-        { "A": "ALTER EGO", "B": "BIGETRON", "sa": 0, "sb": 2 },
-        { "A": "RRQ", "B": "NAVI", "sa": 0, "sb": 2  }
+      "days": [
+        {
+          "day": "Day 1",
+          "matches": [
+            { "A": "ALTER EGO", "B": "BIGETRON", "sa": null, "sb": null },
+            { "A": "NAVI", "B": "TLID", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "matches": [
+            { "A": "EVOS", "B": "ONIC", "sa": null, "sb": null },
+            { "A": "RRQ", "B": "TLID", "sa": null, "sb": null },
+            { "A": "DEWA", "B": "NAVI", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "matches": [
+            { "A": "EVOS", "B": "GEEK FAM", "sa": null, "sb": null },
+            { "A": "RRQ", "B": "ONIC", "sa": null, "sb": null },
+            { "A": "DEWA", "B": "BIGETRON", "sa": null, "sb": null }
+          ]
+        }
       ]
     },
     {
       "name": "Week 9",
-      "matches": [
-        { "A": "BIGETRON", "B": "DEWA", "sa": 2, "sb": 1 },
-        { "A": "TLID", "B": "ALTER EGO", "sa": 2, "sb": 0 },
-        { "A": "GEEK FAM", "B": "TLID", "sa": 0, "sb": 2 },
-        { "A": "ALTER EGO", "B": "RRQ", "sa": 1, "sb": 2 },
-        { "A": "BIGETRON", "B": "ONIC", "sa": 2, "sb": 1 },
-        { "A": "RRQ", "B": "DEWA", "sa": 1, "sb": 2 },
-        { "A": "ONIC", "B": "EVOS", "sa": 2, "sb": 0 },
-        { "A": "NAVI", "B": "GEEK FAM", "sa": 1, "sb": 2 }
+      "days": [
+        {
+          "day": "Day 1",
+          "matches": [
+            { "A": "NAVI", "B": "RRQ", "sa": null, "sb": null },
+            { "A": "GEEK FAM", "B": "ALTER EGO", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 2",
+          "matches": [
+            { "A": "ONIC", "B": "DEWA", "sa": null, "sb": null },
+            { "A": "BIGETRON", "B": "EVOS", "sa": null, "sb": null },
+            { "A": "RRQ", "B": "GEEK FAM", "sa": null, "sb": null }
+          ]
+        },
+        {
+          "day": "Day 3",
+          "matches": [
+            { "A": "EVOS", "B": "ALTER EGO", "sa": null, "sb": null },
+            { "A": "NAVI", "B": "BIGETRON", "sa": null, "sb": null },
+            { "A": "ONIC", "B": "TLID", "sa": null, "sb": null }
+          ]
+        }
       ]
     }
   ]
