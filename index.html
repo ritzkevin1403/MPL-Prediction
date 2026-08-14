@@ -940,14 +940,16 @@ function initTeams() {
 function calc() {
     teams.forEach(t => { t.mw=0; t.ml=0; t.gw=0; t.gl=0; });
     weeks.forEach(w => {
-        w.matches.forEach(m => {
-            if(m.sa === undefined || m.sa === null) return;
-            let A = teams.find(x => x.name === m.A);
-            let B = teams.find(x => x.name === m.B);
-            if(!A || !B) return;
-            A.gw += m.sa; A.gl += m.sb;
-            B.gw += m.sb; B.gl += m.sa;
-            if(m.sa > m.sb) { A.mw++; B.ml++; } else { B.mw++; A.ml++; }
+        (w.days || []).forEach(d => {
+            d.matches.forEach(m => {
+                if(m.sa === undefined || m.sa === null) return;
+                let A = teams.find(x => x.name === m.A);
+                let B = teams.find(x => x.name === m.B);
+                if(!A || !B) return;
+                A.gw += m.sa; A.gl += m.sb;
+                B.gw += m.sb; B.gl += m.sa;
+                if(m.sa > m.sb) { A.mw++; B.ml++; } else { B.mw++; A.ml++; }
+            });
         });
     });
     teams.sort((a,b) => (b.mw !== a.mw) ? b.mw - a.mw : (b.gw - b.gl) - (a.gw - a.gl));
@@ -959,18 +961,20 @@ function simulate(iter=20000) {
         let sim = teamsList.map(t => ({ name:t, mw:0, ml:0, gw:0, gl:0 }));
         const get = (n) => sim.find(x => x.name === n);
         weeks.forEach(w => {
-            w.matches.forEach(m => {
-                let sa, sb;
-                if(m.sa !== undefined && m.sa !== null) { sa=m.sa; sb=m.sb; }
-                else {
-                    let r = Math.random();
-                    if(r < 0.25) { sa=2; sb=0; } else if(r < 0.5) { sa=2; sb=1; }
-                    else if(r < 0.75) { sa=1; sb=2; } else { sa=0; sb=2; }
-                }
-                let A=get(m.A), B=get(m.B);
-                if(!A||!B) return;
-                A.gw+=sa; A.gl+=sb; B.gw+=sb; B.gl+=sa;
-                if(sa>sb) { A.mw++; B.ml++; } else { B.mw++; A.ml++; }
+            (w.days || []).forEach(d => {
+                d.matches.forEach(m => {
+                    let sa, sb;
+                    if(m.sa !== undefined && m.sa !== null) { sa=m.sa; sb=m.sb; }
+                    else {
+                        let r = Math.random();
+                        if(r < 0.25) { sa=2; sb=0; } else if(r < 0.5) { sa=2; sb=1; }
+                        else if(r < 0.75) { sa=1; sb=2; } else { sa=0; sb=2; }
+                    }
+                    let A=get(m.A), B=get(m.B);
+                    if(!A||!B) return;
+                    A.gw+=sa; A.gl+=sb; B.gw+=sb; B.gl+=sa;
+                    if(sa>sb) { A.mw++; B.ml++; } else { B.mw++; A.ml++; }
+                });
             });
         });
         sim.sort((a,b) => (b.mw!==a.mw) ? b.mw-a.mw : (b.gw-b.gl)-(a.gw-a.gl));
@@ -1017,9 +1021,9 @@ function renderStandings() {
 
         let rankColor = i<2?"var(--green)":i<6?"var(--gold)":"var(--red)";
         let rem=0;
-        weeks.forEach(w=>w.matches.forEach(m=>{
+        weeks.forEach(w=>(w.days||[]).forEach(d=>d.matches.forEach(m=>{
             if((m.sa===undefined||m.sa===null)&&(m.A===t.name||m.B===t.name)) rem++;
-        }));
+        })));
         html += `<tr class="${cls}" style="${style}">
             <td><span class="rank-badge" style="background:${rankColor}22;color:${rankColor}">${i+1}</span></td>
             <td style="text-align:left;font-weight:800">${t.name}</td>
@@ -1068,37 +1072,40 @@ function renderMatches() {
     let html="";
     weeks.forEach((w,wi)=>{
         html+=`<div class="week-title">${w.name}</div>`;
-        w.matches.forEach((m,mi)=>{
-            html+=`<div class="match-card">
-                <div class="team-name" style="text-align:left">${m.A}</div>
-                <div class="match-score-container">
-                    <select onchange="update(${wi},${mi})" id="a${wi}_${mi}">
-                        <option value="">-</option>
-                        <option ${m.sa===0?'selected':''}>0</option>
-                        <option ${m.sa===1?'selected':''}>1</option>
-                        <option ${m.sa===2?'selected':''}>2</option>
-                    </select>
-                    <span style="opacity:0.4;font-size:0.65rem;font-weight:800">VS</span>
-                    <select onchange="update(${wi},${mi})" id="b${wi}_${mi}">
-                        <option value="">-</option>
-                        <option ${m.sb===0?'selected':''}>0</option>
-                        <option ${m.sb===1?'selected':''}>1</option>
-                        <option ${m.sb===2?'selected':''}>2</option>
-                    </select>
-                </div>
-                <div class="team-name" style="text-align:right">${m.B}</div>
-            </div>`;
+        (w.days||[]).forEach((d,di)=>{
+            html+=`<div class="week-title" style="margin-top:6px;font-size:0.68rem;color:var(--dim)">${d.day}</div>`;
+            d.matches.forEach((m,mi)=>{
+                html+=`<div class="match-card">
+                    <div class="team-name" style="text-align:left">${m.A}</div>
+                    <div class="match-score-container">
+                        <select onchange="update(${wi},${di},${mi})" id="a${wi}_${di}_${mi}">
+                            <option value="">-</option>
+                            <option ${m.sa===0?'selected':''}>0</option>
+                            <option ${m.sa===1?'selected':''}>1</option>
+                            <option ${m.sa===2?'selected':''}>2</option>
+                        </select>
+                        <span style="opacity:0.4;font-size:0.65rem;font-weight:800">VS</span>
+                        <select onchange="update(${wi},${di},${mi})" id="b${wi}_${di}_${mi}">
+                            <option value="">-</option>
+                            <option ${m.sb===0?'selected':''}>0</option>
+                            <option ${m.sb===1?'selected':''}>1</option>
+                            <option ${m.sb===2?'selected':''}>2</option>
+                        </select>
+                    </div>
+                    <div class="team-name" style="text-align:right">${m.B}</div>
+                </div>`;
+            });
         });
     });
     document.getElementById("matches").innerHTML=html;
 }
 
-function update(wi,mi) {
-    let a=parseInt(document.getElementById(`a${wi}_${mi}`).value);
-    let b=parseInt(document.getElementById(`b${wi}_${mi}`).value);
+function update(wi,di,mi) {
+    let a=parseInt(document.getElementById(`a${wi}_${di}_${mi}`).value);
+    let b=parseInt(document.getElementById(`b${wi}_${di}_${mi}`).value);
     if(isNaN(a)||isNaN(b)) return;
     if(!((a===2&&b<=1)||(b===2&&a<=1))) { alert("Skor harus 2-0 atau 2-1"); return; }
-    weeks[wi].matches[mi].sa=a; weeks[wi].matches[mi].sb=b;
+    weeks[wi].days[di].matches[mi].sa=a; weeks[wi].days[di].matches[mi].sb=b;
     localStorage.setItem("mplData_s18", JSON.stringify(weeks));
     refresh();
 }
@@ -1115,9 +1122,9 @@ function showAnalysis(teamName) {
     let t=teams.find(x=>x.name===teamName);
     let p=probability[teamName].playoff, t2=probability[teamName].top2;
     let rem=0;
-    weeks.forEach(w=>w.matches.forEach(m=>{
+    weeks.forEach(w=>(w.days||[]).forEach(d=>d.matches.forEach(m=>{
         if((m.sa===undefined||m.sa===null)&&(m.A===teamName||m.B===teamName)) rem++;
-    }));
+    })));
     document.getElementById("modalTeamName").innerText=teamName;
     let statusLabel="", statusColor="var(--dim)";
     if(t2>=99.9){statusLabel="TOP 2";statusColor="var(--gold)";}
@@ -1148,11 +1155,13 @@ function closeModal() { document.getElementById("modalOverlay").style.display="n
 function getFinalStandings() {
     let t = teamsList.map(x => ({ name:x, mw:0, ml:0, gw:0, gl:0 }));
     regularData.weeks.forEach(w => {
-        w.matches.forEach(m => {
-            if(m.sa === undefined || m.sa === null) return;
-            let A=t.find(x=>x.name===m.A), B=t.find(x=>x.name===m.B);
-            A.gw+=m.sa; A.gl+=m.sb; B.gw+=m.sb; B.gl+=m.sa;
-            if(m.sa>m.sb){A.mw++;B.ml++;}else{B.mw++;A.ml++;}
+        (w.days || []).forEach(d => {
+            d.matches.forEach(m => {
+                if(m.sa === undefined || m.sa === null) return;
+                let A=t.find(x=>x.name===m.A), B=t.find(x=>x.name===m.B);
+                A.gw+=m.sa; A.gl+=m.sb; B.gw+=m.sb; B.gl+=m.sa;
+                if(m.sa>m.sb){A.mw++;B.ml++;}else{B.mw++;A.ml++;}
+            });
         });
     });
     t.sort((a,b)=>(b.mw!==a.mw)?b.mw-a.mw:(b.gw-b.gl)-(a.gw-a.gl));
@@ -1164,7 +1173,7 @@ function getFinalStandings() {
 // sehingga bracket & prediksi tampil sebagai TBD ("?"), bukan tebakan.
 function isRegularSeasonComplete() {
     if(!regularData.weeks || regularData.weeks.length === 0) return false;
-    return regularData.weeks.every(w => w.matches.every(m => m.sa !== null && m.sa !== undefined));
+    return regularData.weeks.every(w => (w.days||[]).every(d => d.matches.every(m => m.sa !== null && m.sa !== undefined)));
 }
 
 let finalStandings = [];
@@ -1428,12 +1437,14 @@ function calcWinRates() {
     const wr = {};
     teamsList.forEach(t => wr[t] = { w:0, l:0, gw:0, gl:0 });
     weeks.forEach(w => {
-        w.matches.forEach(m => {
-            if(m.sa === undefined || m.sa === null) return;
-            wr[m.A].gw += m.sa; wr[m.A].gl += m.sb;
-            wr[m.B].gw += m.sb; wr[m.B].gl += m.sa;
-            if(m.sa > m.sb) { wr[m.A].w++; wr[m.B].l++; }
-            else { wr[m.B].w++; wr[m.A].l++; }
+        (w.days || []).forEach(d => {
+            d.matches.forEach(m => {
+                if(m.sa === undefined || m.sa === null) return;
+                wr[m.A].gw += m.sa; wr[m.A].gl += m.sb;
+                wr[m.B].gw += m.sb; wr[m.B].gl += m.sa;
+                if(m.sa > m.sb) { wr[m.A].w++; wr[m.B].l++; }
+                else { wr[m.B].w++; wr[m.A].l++; }
+            });
         });
     });
     return wr;
@@ -1581,8 +1592,13 @@ async function loadData() {
     const saved = JSON.parse(localStorage.getItem("mplData_s18") || "null");
     // Hanya pakai data tersimpan di localStorage kalau strukturnya masih cocok
     // dengan jumlah minggu/match dari data.json saat ini; kalau tidak, mulai fresh.
-    if(saved && saved.length === regularData.weeks.length &&
-       saved.every((w,i) => w.matches.length === regularData.weeks[i].matches.length)) {
+    const sameShape = saved && saved.length === regularData.weeks.length &&
+       saved.every((w,i) => {
+           const rw = regularData.weeks[i];
+           if(!w.days || !rw.days || w.days.length !== rw.days.length) return false;
+           return w.days.every((d,di) => d.matches.length === rw.days[di].matches.length);
+       });
+    if(sameShape) {
         weeks = saved;
     } else {
         weeks = JSON.parse(JSON.stringify(regularData.weeks));
