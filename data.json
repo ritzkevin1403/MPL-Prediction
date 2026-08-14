@@ -6,24 +6,24 @@
         {
           "day": "Day 1",
           "matches": [
-            { "A": "EVOS", "B": "RRQ", "sa": null, "sb": null },
-            { "A": "NAVI", "B": "ALTER EGO", "sa": null, "sb": null }
+            { "A": "EVOS", "B": "RRQ" },
+            { "A": "NAVI", "B": "ALTER EGO" }
           ]
         },
         {
           "day": "Day 2",
           "matches": [
-            { "A": "TLID", "B": "GEEK FAM", "sa": null, "sb": null },
-            { "A": "DEWA", "B": "RRQ", "sa": null, "sb": null },
-            { "A": "EVOS", "B": "NAVI", "sa": null, "sb": null }
+            { "A": "TLID", "B": "GEEK FAM" },
+            { "A": "DEWA", "B": "RRQ" },
+            { "A": "EVOS", "B": "NAVI" }
           ]
         },
         {
           "day": "Day 3",
           "matches": [
-            { "A": "TLID", "B": "DEWA", "sa": null, "sb": null },
-            { "A": "GEEK FAM", "B": "BIGETRON", "sa": null, "sb": null },
-            { "A": "ALTER EGO", "B": "ONIC", "sa": null, "sb": null }
+            { "A": "TLID", "B": "DEWA" },
+            { "A": "GEEK FAM", "B": "BIGETRON" },
+            { "A": "ALTER EGO", "B": "ONIC" }
           ]
         }
       ]
@@ -34,24 +34,24 @@
         {
           "day": "Day 1",
           "matches": [
-            { "A": "TLID", "B": "NAVI", "sa": null, "sb": null },
-            { "A": "BIGETRON", "B": "DEWA", "sa": null, "sb": null }
+            { "A": "TLID", "B": "NAVI" },
+            { "A": "BIGETRON", "B": "DEWA" }
           ]
         },
         {
           "day": "Day 2",
           "matches": [
-            { "A": "TLID", "B": "EVOS", "sa": null, "sb": null },
-            { "A": "NAVI", "B": "GEEK FAM", "sa": null, "sb": null },
-            { "A": "ONIC", "B": "RRQ", "sa": null, "sb": null }
+            { "A": "TLID", "B": "EVOS" },
+            { "A": "NAVI", "B": "GEEK FAM" },
+            { "A": "ONIC", "B": "RRQ" }
           ]
         },
         {
           "day": "Day 3",
           "matches": [
-            { "A": "DEWA", "B": "ALTER EGO", "sa": null, "sb": null },
-            { "A": "ONIC", "B": "BIGETRON", "sa": null, "sb": null },
-            { "A": "GEEK FAM", "B": "EVOS", "sa": null, "sb": null }
+            { "A": "DEWA", "B": "ALTER EGO" },
+            { "A": "ONIC", "B": "BIGETRON" },
+            { "A": "GEEK FAM", "B": "EVOS" }
           ]
         }
       ]
@@ -62,24 +62,24 @@
         {
           "day": "Day 1",
           "matches": [
-            { "A": "BIGETRON", "B": "NAVI", "sa": null, "sb": null },
-            { "A": "DEWA", "B": "GEEK FAM", "sa": null, "sb": null }
+            { "A": "BIGETRON", "B": "NAVI" },
+            { "A": "DEWA", "B": "GEEK FAM" }
           ]
         },
         {
           "day": "Day 2",
           "matches": [
-            { "A": "TLID", "B": "ONIC", "sa": null, "sb": null },
-            { "A": "ALTER EGO", "B": "EVOS", "sa": null, "sb": null },
-            { "A": "RRQ", "B": "BIGETRON", "sa": null, "sb": null }
+            { "A": "TLID", "B": "ONIC" },
+            { "A": "ALTER EGO", "B": "EVOS" },
+            { "A": "RRQ", "B": "BIGETRON" }
           ]
         },
         {
           "day": "Day 3",
           "matches": [
-            { "A": "NAVI", "B": "ONIC", "sa": null, "sb": null },
-            { "A": "GEEK FAM", "B": "RRQ", "sa": null, "sb": null },
-            { "A": "TLID", "B": "ALTER EGO", "sa": null, "sb": null }
+            { "A": "NAVI", "B": "ONIC" },
+            { "A": "GEEK FAM", "B": "RRQ" },
+            { "A": "TLID", "B": "ALTER EGO" }
           ]
         }
       ]
@@ -90,24 +90,24 @@
         {
           "day": "Day 1",
           "matches": [
-            { "A": "NAVI", "B": "DEWA", "sa": null, "sb": null },
-            { "A": "TLID", "B": "RRQ", "sa": null, "sb": null }
+            { "A": "NAVI", "B": "DEWA" },
+            { "A": "TLID", "B": "RRQ" }
           ]
         },
         {
           "day": "Day 2",
           "matches": [
-            { "A": "DEWA", "B": "ONIC", "sa": null, "sb": null },
-            { "A": "EVOS", "B": "BIGETRON", "sa": null, "sb": null },
-            { "A": "ALTER EGO", "B": "GEEK FAM", "sa": null, "sb": null }
+            { "A": "DEWA", "B": "ONIC" },
+            { "A": "EVOS", "B": "BIGETRON" },
+            { "A": "ALTER EGO", "B": "GEEK FAM" }
           ]
         },
         {
           "day": "Day 3",
           "matches": [
-            { "A": "RRQ", "B": "NAVI", "sa": null, "sb": null },
-            { "A": "ONIC", "B": "EVOS", "sa": null, "sb": null },
-            { "A": "BIGETRON", "B": "ALTER EGO", "sa": null, "sb": null }
+            { "A": "RRQ", "B": "NAVI" },
+            { "A": "ONIC", "B": "EVOS" },
+            { "A": "BIGETRON", "B": "ALTER EGO" }
           ]
         }
       ]
@@ -118,24 +118,24 @@
         {
           "day": "Day 1",
           "matches": [
-            { "A": "EVOS", "B": "DEWA", "sa": null, "sb": null },
-            { "A": "GEEK FAM", "B": "ONIC", "sa": null, "sb": null }
+            { "A": "EVOS", "B": "DEWA" },
+            { "A": "GEEK FAM", "B": "ONIC" }
           ]
         },
         {
           "day": "Day 2",
           "matches": [
-            { "A": "TLID", "B": "BIGETRON", "sa": null, "sb": null },
-            { "A": "ALTER EGO", "B": "RRQ", "sa": null, "sb": null },
-            { "A": "NAVI", "B": "EVOS", "sa": null, "sb": null }
+            { "A": "TLID", "B": "BIGETRON" },
+            { "A": "ALTER EGO", "B": "RRQ" },
+            { "A": "NAVI", "B": "EVOS" }
           ]
         },
         {
           "day": "Day 3",
           "matches": [
-            { "A": "GEEK FAM", "B": "TLID", "sa": null, "sb": null },
-            { "A": "ONIC", "B": "ALTER EGO", "sa": null, "sb": null },
-            { "A": "RRQ", "B": "DEWA", "sa": null, "sb": null }
+            { "A": "GEEK FAM", "B": "TLID" },
+            { "A": "ONIC", "B": "ALTER EGO" },
+            { "A": "RRQ", "B": "DEWA" }
           ]
         }
       ]
@@ -146,24 +146,24 @@
         {
           "day": "Day 1",
           "matches": [
-            { "A": "ONIC", "B": "GEEK FAM", "sa": null, "sb": null },
-            { "A": "DEWA", "B": "EVOS", "sa": null, "sb": null }
+            { "A": "ONIC", "B": "GEEK FAM" },
+            { "A": "DEWA", "B": "EVOS" }
           ]
         },
         {
           "day": "Day 2",
           "matches": [
-            { "A": "GEEK FAM", "B": "NAVI", "sa": null, "sb": null },
-            { "A": "RRQ", "B": "ALTER EGO", "sa": null, "sb": null },
-            { "A": "BIGETRON", "B": "TLID", "sa": null, "sb": null }
+            { "A": "GEEK FAM", "B": "NAVI" },
+            { "A": "RRQ", "B": "ALTER EGO" },
+            { "A": "BIGETRON", "B": "TLID" }
           ]
         },
         {
           "day": "Day 3",
           "matches": [
-            { "A": "ALTER EGO", "B": "DEWA", "sa": null, "sb": null },
-            { "A": "BIGETRON", "B": "ONIC", "sa": null, "sb": null },
-            { "A": "EVOS", "B": "TLID", "sa": null, "sb": null }
+            { "A": "ALTER EGO", "B": "DEWA" },
+            { "A": "BIGETRON", "B": "ONIC" },
+            { "A": "EVOS", "B": "TLID" }
           ]
         }
       ]
@@ -174,24 +174,24 @@
         {
           "day": "Day 1",
           "matches": [
-            { "A": "GEEK FAM", "B": "BIGETRON", "sa": null, "sb": null },
-            { "A": "DEWA", "B": "TLID", "sa": null, "sb": null }
+            { "A": "GEEK FAM", "B": "BIGETRON" },
+            { "A": "DEWA", "B": "TLID" }
           ]
         },
         {
           "day": "Day 2",
           "matches": [
-            { "A": "ALTER EGO", "B": "NAVI", "sa": null, "sb": null },
-            { "A": "BIGETRON", "B": "RRQ", "sa": null, "sb": null },
-            { "A": "GEEK FAM", "B": "DEWA", "sa": null, "sb": null }
+            { "A": "ALTER EGO", "B": "NAVI" },
+            { "A": "BIGETRON", "B": "RRQ" },
+            { "A": "GEEK FAM", "B": "DEWA" }
           ]
         },
         {
           "day": "Day 3",
           "matches": [
-            { "A": "ALTER EGO", "B": "TLID", "sa": null, "sb": null },
-            { "A": "RRQ", "B": "EVOS", "sa": null, "sb": null },
-            { "A": "ONIC", "B": "NAVI", "sa": null, "sb": null }
+            { "A": "ALTER EGO", "B": "TLID" },
+            { "A": "RRQ", "B": "EVOS" },
+            { "A": "ONIC", "B": "NAVI" }
           ]
         }
       ]
@@ -202,24 +202,24 @@
         {
           "day": "Day 1",
           "matches": [
-            { "A": "ALTER EGO", "B": "BIGETRON", "sa": null, "sb": null },
-            { "A": "NAVI", "B": "TLID", "sa": null, "sb": null }
+            { "A": "ALTER EGO", "B": "BIGETRON" },
+            { "A": "NAVI", "B": "TLID" }
           ]
         },
         {
           "day": "Day 2",
           "matches": [
-            { "A": "EVOS", "B": "ONIC", "sa": null, "sb": null },
-            { "A": "RRQ", "B": "TLID", "sa": null, "sb": null },
-            { "A": "DEWA", "B": "NAVI", "sa": null, "sb": null }
+            { "A": "EVOS", "B": "ONIC" },
+            { "A": "RRQ", "B": "TLID" },
+            { "A": "DEWA", "B": "NAVI" }
           ]
         },
         {
           "day": "Day 3",
           "matches": [
-            { "A": "EVOS", "B": "GEEK FAM", "sa": null, "sb": null },
-            { "A": "RRQ", "B": "ONIC", "sa": null, "sb": null },
-            { "A": "DEWA", "B": "BIGETRON", "sa": null, "sb": null }
+            { "A": "EVOS", "B": "GEEK FAM" },
+            { "A": "RRQ", "B": "ONIC" },
+            { "A": "DEWA", "B": "BIGETRON" }
           ]
         }
       ]
@@ -230,24 +230,24 @@
         {
           "day": "Day 1",
           "matches": [
-            { "A": "NAVI", "B": "RRQ", "sa": null, "sb": null },
-            { "A": "GEEK FAM", "B": "ALTER EGO", "sa": null, "sb": null }
+            { "A": "NAVI", "B": "RRQ" },
+            { "A": "GEEK FAM", "B": "ALTER EGO" }
           ]
         },
         {
           "day": "Day 2",
           "matches": [
-            { "A": "ONIC", "B": "DEWA", "sa": null, "sb": null },
-            { "A": "BIGETRON", "B": "EVOS", "sa": null, "sb": null },
-            { "A": "RRQ", "B": "GEEK FAM", "sa": null, "sb": null }
+            { "A": "ONIC", "B": "DEWA" },
+            { "A": "BIGETRON", "B": "EVOS" },
+            { "A": "RRQ", "B": "GEEK FAM" }
           ]
         },
         {
           "day": "Day 3",
           "matches": [
-            { "A": "EVOS", "B": "ALTER EGO", "sa": null, "sb": null },
-            { "A": "NAVI", "B": "BIGETRON", "sa": null, "sb": null },
-            { "A": "ONIC", "B": "TLID", "sa": null, "sb": null }
+            { "A": "EVOS", "B": "ALTER EGO" },
+            { "A": "NAVI", "B": "BIGETRON" },
+            { "A": "ONIC", "B": "TLID" }
           ]
         }
       ]
